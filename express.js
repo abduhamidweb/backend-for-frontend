@@ -15,7 +15,6 @@ async function Server(req, res) {
   let route = req.url.toLowerCase();
   let method = req.method.toUpperCase();
   let url = req.url.split("/"); //    /users  | /users/1
-  console.log(callbacks);
   if (url[2] && checkPath(route)) {
     let key = checkPath(route); //       /users/:id
     let arg = key.split("/:"); //      ['/users','id']
@@ -58,6 +57,7 @@ class Express {
     callbacks[route] = callbacks[route] || {};
     callbacks[route]["GET"] = callbacks[route]?.GET || callback;
     if (route.includes(":")) callbacks[route]["path"] = regExp(route); // /users/:id
+  
   }
 
   post(route, callback) {

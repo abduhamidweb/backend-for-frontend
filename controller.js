@@ -17,7 +17,12 @@ module.exports = {
   },
   POST: (req, res) => {
     try {
-      const { name, username, email, phone } = req.body;
+      const {
+        name,
+        username,
+        email,
+        phone
+      } = req.body;
       validator.check(name, username, email, phone);
       let user = req.body;
       user["id"] = users.length ? users[users.length - 1].id + 1 : 1;
@@ -33,7 +38,12 @@ module.exports = {
       const id = req.params?.id;
       let user = users.find((u) => u.id == id);
       if (!user) throw new Error("Not found " + id + "-user");
-      const { name, username, email, phone } = req.body;
+      const {
+        name,
+        username,
+        email,
+        phone
+      } = req.body;
       if (!name || !username || !email || !phone)
         throw new Error("Not found maqsad!");
       user.name = name ? name : user.name;

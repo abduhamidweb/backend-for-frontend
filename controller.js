@@ -21,7 +21,7 @@ module.exports = {
       validator.check(name, username, email, phone);
       let user = req.body;
       user["id"] = users.length ? users[users.length - 1].id + 1 : 1;
-      users.push(user);
+      users.unshift(user);
       validator.write("users", users);
       res.end(user.id + " User added ");
     } catch (error) {
